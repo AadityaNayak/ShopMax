@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv")
 const connectDb = require("./config/config")
 const productRoutes = require("./routes/productsRoutes")
+const {errorHandler} = require("./middlewares/errorMiddleware")
 
 dotenv.config();
 
@@ -20,7 +21,10 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to server</h1>");
 });
 
+// products routes
 app.use('/api', productRoutes);
+// error handler middlewares
+app.use(errorHandler);
 
 const PORT = 8000;
 
