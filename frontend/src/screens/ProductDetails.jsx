@@ -16,15 +16,15 @@ const ProductDetails = ({ match }) => {
   const params = useParams();
   const [Product, setProduct] = useState({});
 
-  async function fethProductDetails() {
-    let data = await fetch(`http://localhost:8080/products/${params.id}`);
+  async function fetchProductDetails() {
+    let data = await fetch(`http://localhost:8080/api/products/${params.id}`);
     data = await data.json();
     console.log(data);
     setProduct(data);
   }
 
   useEffect(() => {
-    fethProductDetails();
+    fetchProductDetails();
   }, []);
 
   return (

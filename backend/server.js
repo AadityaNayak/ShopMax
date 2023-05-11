@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv")
 const connectDb = require("./config/config")
 const productRoutes = require("./routes/productsRoutes")
+
 dotenv.config();
 
 // Connecting to MongoDB
