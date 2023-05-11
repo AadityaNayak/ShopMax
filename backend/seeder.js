@@ -1,16 +1,14 @@
-// Only required to export data after that it is of no use
-
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const users = require("./data/users");
-const products = require("./data/products");
 const User = require("./models/UserModel");
 const Product = require("./models/ProductModel");
 const Order = require("./models/OrderModel");
-const connectDB = require("./config/config");
+const products = require("./data/products");
+const connectDb = require("./config/config");
 
 dotenv.config();
-connectDB();
+connectDb();
 
 const importData = async () => {
   try {
