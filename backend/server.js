@@ -3,24 +3,23 @@ const products = require("./data/products");
 const cors = require("cors");
 const dotenv = require("dotenv")
 const connectDb = require("./config/config")
+const productRoutes = require("./routes/productsRoutes")
 dotenv.config();
 
 // Connecting to MongoDB
 connectDb()
 const app = express();
 
+// Handling cors error
 app.use(cors());
 app.use(express.json());
+
+
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to server</h1>");
 });
-app.get("/products", (req, res) => {
-  res.json(products);
-});
-app.get("/products/:id", (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
+
+app.use('/api', productRoutes);
 
 const PORT = 8000;
 
