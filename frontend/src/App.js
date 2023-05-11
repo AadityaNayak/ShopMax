@@ -3,19 +3,22 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
-    <Header />
-      <main>
-        <Container>
-          <h1>Shopping Application</h1>
-          <HomeScreen />
-        </Container>
-      </main>
-      <Footer />
-    </>
+    <Router>
+        <Header />
+        <main>
+          <Container>
+            <h1>ShopMax</h1>
+      <Routes>
+            <Route path="/" Component={HomeScreen} exact />
+      </Routes>
+          </Container>
+        </main>
+        <Footer />
+    </Router>
   );
 }
 
