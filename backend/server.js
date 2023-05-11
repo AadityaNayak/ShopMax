@@ -23,7 +23,8 @@ app.get("/", (req, res) => {
 
 // products routes
 app.use('/api', productRoutes);
-// error handler middlewares
+
+// error handler middleware
 app.use(errorHandler);
 
 const PORT = 8000;
