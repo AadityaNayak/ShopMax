@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -8,7 +8,8 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("/api/products");
+    let data = await fetch("http://localhost:8080/api/products");
+    data = await data.json();
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
