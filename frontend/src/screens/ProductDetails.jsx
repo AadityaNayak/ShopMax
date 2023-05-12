@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
+import {listProductDetails} from "../actions/productActions"
 
 const ProductDetails = ({ match }) => {
   const params = useParams();
