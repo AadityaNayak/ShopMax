@@ -27,7 +27,7 @@ const ProductDetails = ({ history, match }) => {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    navigate(`/cart/${params.id}?qty=${qty}`);
+    // navigate(`/cart/${params.id}?qty=${qty}`);
   };
   return (
     <>
