@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 import { Row, Col } from "react-bootstrap";
 import ProductScreen from "./ProductScreen";
+import Loader from "../components/shared/Loader";
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -15,7 +16,7 @@ const HomeScreen = () => {
   return (
     <>
       {loading ? (
-        <h3>Loading ..</h3>
+        <Loader />
       ) : error ? (
         <h3>{error}</h3>
       ) : (
