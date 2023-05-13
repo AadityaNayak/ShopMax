@@ -5,7 +5,7 @@ const{protect} = require("../middlewares/authMiddleware")
 const router = express.Router();
 
 // user registration
-
+router.route("/").post(registerUser);
 // post email and password auth
 router.post('/login', authController);
 
