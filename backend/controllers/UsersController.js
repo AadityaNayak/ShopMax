@@ -2,6 +2,7 @@ const User = require("../models/UserModel");
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../utils/generateToken");
 
+
 const authController = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -19,4 +20,7 @@ const authController = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = authController;
+const getUserProfile = asyncHandler(async(req, res) => {
+    res.send("success");
+});
+module.exports = {authController, getUserProfile};

@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 
 // products routes
 app.use('/api', productRoutes);
-app.use('/api', userRoutes);
+app.use('/api/users', userRoutes);
 
 // error handler middleware
 app.use(errorHandler);
