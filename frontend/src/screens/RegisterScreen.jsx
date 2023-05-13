@@ -34,7 +34,11 @@ const RegisterScreen = ({}) => {
   const submitHandler = (e) => {
     e.preventDefault();
     //dispatch
-    dispatch(register(name, email, password));
+    if (password !== confirmPassword) {
+      setMessage("Password do not macth");
+    } else {
+      dispatch(register(name, email, password));
+    }
   };
 
   return (
@@ -43,7 +47,7 @@ const RegisterScreen = ({}) => {
         <h1>Register</h1>
         {error && <Message varient="danger">{error}</Message>}
         {loading && <Loader />}
-        {message && <Message variant="danger">{setMessage}</Message>}
+        {message && <Message variant="danger">{message}</Message>}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="email">
             <Form.Label>Name</Form.Label>
@@ -73,7 +77,7 @@ const RegisterScreen = ({}) => {
             ></Form.Control>
           </Form.Group>
           <Form.Group controlId="confirmPassword">
-            <Form.Label>COnfirm Password</Form.Label>
+            <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Re-enter password"
