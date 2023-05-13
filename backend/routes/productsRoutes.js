@@ -2,14 +2,13 @@ const express = require("express");
 const products = require("../models/ProductModel");
 const Product = require("../models/ProductModel");
 const asynchandler = require("express-async-handler")
+const{getProduct, getProducts} = require("../controllers/productsController")
 
 const router = express.Router();
 
 // To get all the products
-router.get("/products", asynchandler(async (req, res) => {
-  const products = await Product.find({});
-  res.json(products);
-}));
+router.route("/products").get(getProducts);
+router.route("/products/:id").get(getProduct);
 
 // To get a single product
 router.get("/products/:id", asynchandler(async (req, res) => {
