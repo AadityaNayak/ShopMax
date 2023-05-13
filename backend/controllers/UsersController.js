@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 const authController = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  if (user && (await User.matchPassword(password))) {
+  if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
       name: user.name,
@@ -12,9 +12,8 @@ const authController = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
       token: null,
     });
-  }
-  else{
-    res.status(404);
+  } else {
+    res.status(401);
     throw new Error("Invalid Email or Password");
   }
 });
