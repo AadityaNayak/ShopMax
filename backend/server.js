@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv")
 const connectDb = require("./config/config")
 const productRoutes = require("./routes/productsRoutes")
+const userRoutes = require("./routes/UsersRoutes")
 const {errorHandler} = require("./middlewares/errorMiddleware")
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 // products routes
 app.use('/api', productRoutes);
+app.use('/api', userRoutes);
 
 // error handler middleware
 app.use(errorHandler);
