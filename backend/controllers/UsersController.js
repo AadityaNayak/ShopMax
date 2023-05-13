@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       name: user.name,
-      email: iser.email,
+      email: user.email,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
