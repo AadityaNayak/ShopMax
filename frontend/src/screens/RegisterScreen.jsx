@@ -14,6 +14,7 @@ const RegisterScreen = ({}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const params = useParams();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,8 +22,8 @@ const RegisterScreen = ({}) => {
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
     if (userInfo) {
@@ -33,7 +34,7 @@ const RegisterScreen = ({}) => {
   const submitHandler = (e) => {
     e.preventDefault();
     //dispatch
-    dispatch(login(name, email, password));
+    dispatch(register(name, email, password));
   };
 
   return (
@@ -87,7 +88,7 @@ const RegisterScreen = ({}) => {
         <Row>
           <Col>
             Have an account ?
-            <Link to={redirect ? `login?redirect=${redirect}` : "/login"}>
+            <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
               Login
             </Link>
           </Col>
